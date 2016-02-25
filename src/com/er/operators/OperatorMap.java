@@ -23,8 +23,6 @@ public class OperatorMap<T, R> implements Subject.Operator<R, T> {
             @Override
             public void onNext(T state) {
 
-                //递归执行，如果有两个Map操作-->A--->B，则B中持有A的应用，当B的call执行时，首先执行A的call
-
                 o.onNext(OperatorMap.this.convert.call(state));
 
             }

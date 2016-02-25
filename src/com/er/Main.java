@@ -9,6 +9,12 @@ import com.er.functions.Function1;
 public class Main {
     public static void main(String[] args) {
 
+        filterTest();
+
+    }
+
+    //filter操作测试
+    private static void filterTest() {
         Subject<String> subject = Subject.create(new Subject.OnSubscible<String>() {
             @Override
             public void call(Subscriber<? super String> var) {
@@ -28,9 +34,9 @@ public class Main {
                 System.out.println(state);
             }
         });
-
     }
 
+    //map操作测试
     private static void mapTest() {
         Subject<String> subject = Subject.create(new Subject.OnSubscible<String>() {
             @Override

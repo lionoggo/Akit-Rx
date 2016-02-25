@@ -20,7 +20,7 @@ public class OperatorFilter<T> implements Subject.Operator<T, T> {
             @Override
             public void onNext(T state) {
 
-                if (OperatorFilter.this.function.call(state).booleanValue()) {//满足条件的留下
+                if (OperatorFilter.this.function.call(state).booleanValue()) {
                     var.onNext(state);
                 }
             }
