@@ -7,6 +7,7 @@ import com.er.functions.Function1;
 
 /**
  * Created by God on 2016/1/26.
+ * operator
  */
 public class OperatorMap<T, R> implements Subject.Operator<R, T> {
     private Function1<? super T, ? extends R> convert;
@@ -17,7 +18,6 @@ public class OperatorMap<T, R> implements Subject.Operator<R, T> {
 
 
     public Subscriber<? super T> call(Subscriber<? super R> o) {
-
 
         return new Subscriber<T>(o) {
             @Override

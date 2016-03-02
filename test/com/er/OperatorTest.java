@@ -2,19 +2,17 @@ package com.er;
 
 
 import com.er.functions.Function1;
+import org.junit.Test;
 
 /**
  * Created by God on 2016/1/22.
+ * operator test
  */
-public class Main {
-    public static void main(String[] args) {
+public class OperatorTest {
 
-        filterTest();
 
-    }
-
-    //filter操作测试
-    private static void filterTest() {
+    @Test
+    public void filterTest() {
         Subject<String> subject = Subject.create(new Subject.OnSubscible<String>() {
             @Override
             public void call(Subscriber<? super String> var) {
@@ -37,7 +35,8 @@ public class Main {
     }
 
     //map操作测试
-    private static void mapTest() {
+    @Test
+    public void mapTest() {
         Subject<String> subject = Subject.create(new Subject.OnSubscible<String>() {
             @Override
             public void call(Subscriber<? super String> var) {
@@ -46,20 +45,9 @@ public class Main {
         });
 
 
-        Subject<String> newSubject = subject.map(new Function1<String, String>() {
-            @Override
-            public String call(String var) {
+        Subject<String> newSubject = subject.map(var -> var + "_map");
 
-                return var + "_map";
-            }
-        });
-
-        Subject<String> threeSubject = newSubject.map(new Function1<String, String>() {
-            @Override
-            public String call(String var) {
-                return var + "|||||||||||";
-            }
-        });
+        Subject<String> threeSubject = newSubject.map(var -> var + "|||||||||||");
 
 
         threeSubject.subscribe(new Subscriber<String>() {
@@ -70,7 +58,8 @@ public class Main {
         });
     }
 
-    private static void createTest() {
+    @Test
+    public void createTest() {
         Subject.create(new Subject.OnSubscible<String>() {
             @Override
             public void call(Subscriber<? super String> var) {
